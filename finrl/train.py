@@ -46,7 +46,7 @@ def train(
     # read parameters
     cwd = kwargs.get("cwd", "./" + str(model_name))
 
-    if drl_lib == "elegantrl":
+    if drl_lib == "elegantrl": # by default
         from finrl.agents.elegantrl.models import DRLAgent as DRLAgent_erl
         break_step = kwargs.get("break_step", 1e6)
         erl_params = kwargs.get("erl_params")
