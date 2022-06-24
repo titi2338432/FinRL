@@ -8,7 +8,8 @@ import pyfolio
 from pyfolio import timeseries
 
 from finrl import config
-from finrl.finrl_meta.preprocessor.yahoodownloader import YahooDownloader
+# from finrl.finrl_meta.preprocessor.yahoodownloader import YahooDownloader
+from finrl.finrl_meta.preprocessor.tusharedownloader import TushareDownloader
 
 
 def get_daily_return(df, value_col_name="account_value"):
@@ -68,9 +69,8 @@ def backtest_plot(
 
 
 def get_baseline(ticker, start, end):
-    return YahooDownloader(
-        start_date=start, end_date=end, ticker_list=[ticker]
-    ).fetch_data()
+    # return YahooDownloader(start_date=start, end_date=end, ticker_list=[ticker]).fetch_data()
+    return TushareDownloader(start_date=start, end_date=end, ticker_list=[ticker]).fetch_index(ticker)
 
 
 def trx_plot(df_trade, df_actions, ticker_list):
